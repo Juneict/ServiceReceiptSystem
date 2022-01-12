@@ -27,8 +27,9 @@
                       </ul>
                   </div>
               @endif
-              <form action="/tasks/update " method="POST">
+              <form action="/tasks/{{$task->id}}" method="POST">
                       @csrf
+                      @method('PUT')
                       <div class="form-group">
                           <label for="name">Customer</label><br>
                           <select name="customer_id"  class="form-control">

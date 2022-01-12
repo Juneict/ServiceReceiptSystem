@@ -31,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="/dist/img/adminlogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 1">
+      <img src="/dist/img/adminlogo.png"  class="brand-image img-circle elevation-3" style="opacity: 1">
       <span class="brand-text font-weight-light">ICT SRS</span>
     </a>
 
@@ -70,16 +70,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/tasks" class="nav-link">
+                <a href="/tasks" class="nav-link {{ Request::segment(1) == 'tasks' ? 'active' : ''}}">
                 <i class="fas fa-tasks nav-icon"></i>
-                  <p>Add Task</p>
+                  <p>Tasks</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/orders" class="nav-link {{ Request::segment(1) == 'orders' ? 'active' : ''}}">
+                <i class="fas fa-tasks nav-icon"></i>
+                  <p>Orders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-book"></i>
+                      <p>
+                        Reports
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="/task_reports" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Tasks Reports</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/task_service_reports" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>YGN Service Reports</p>
+                        </a>
+                      </li>
+                    </ul>
+                </li>
             </ul>
           </li>
           
         </ul>
       </nav>
+
+      
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -154,12 +185,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="dist/js/demo.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
+
 <script>
+  
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,

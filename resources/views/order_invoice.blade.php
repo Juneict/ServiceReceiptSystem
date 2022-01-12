@@ -36,15 +36,15 @@
         Inovice
         To
         <address>
-          <strong> Customer Name : </strong>{{ $task->customers->name }}<br>
-          Phone : {{ $task->customers->ph }}<br>
+          <strong> Customer Name : </strong>{{ $order->name }}<br>
+          Phone : {{ $order->ph }}<br>
 
         </address>
       </div>
       <!-- /.col -->
       <div class="col-sm-4 invoice-col">
         <br>
-        <b>Recepit No : {{ $task->id}}</b><br>
+        <b>Order ID :  {{ $order->id}}</b><br>
       
         <b>Date : </b> {{ $date }}<br>
         
@@ -61,21 +61,28 @@
           <tr>
             <th>No</th>
             <th>Product</th>
-            <th>Description</th>
-            <th>Note</th>
+            <th>Part</th>
+            
             <th>Price</th>
           </tr>
           </thead>
           <tbody>         
             <td>1</td>
-            <td>{{ $task->customers->brand }}</td>
-            <td>{{ $task->customers->error}}</td>
-            <td>{{ $task->customers->note}}</td>
-            <td>{{ $task->total_amount}}</td>
+            <td>{{ $order->brand }}</td>
+            <td>{{ $order->part}}</td>
+            
+            <td>{{ $order->price}}</td>
             <tfoot>
-                <td  colspan="3"></td>
-                <td>Total</td>
-                <td>{{ $task->total_amount}}</td>
+                <tr>
+                    <td  colspan="2"></td>
+                    <th>Prepaid</th>
+                    <td>{{ $order->prepaid}}</td>
+                </tr>
+               <tr>
+                    <td  colspan="2"></td>
+                    <th>Total</th>
+                    <td>{{ $order->price - $order->prepaid }}</td>
+               </tr>
             </tfoot>
             
         </table>
@@ -86,7 +93,6 @@
     </div>
     <!-- /.row -->
 
-  
     <div class="row">
       <!-- accepted payments column -->
       <div class="col-12">

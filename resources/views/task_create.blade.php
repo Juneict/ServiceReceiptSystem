@@ -27,7 +27,7 @@
                       </ul>
                   </div>
               @endif
-              <form action="/tasks/submit " method="POST">
+              <form action="/tasks " method="POST">
                       @csrf
                       <div class="form-group">
                           <label for="name">Customer</label><br>

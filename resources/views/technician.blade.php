@@ -6,79 +6,51 @@
     
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12">
-          <div class="card">
-                      @if (session('message'))
-                        <div class="alert alert-success">
-                            {{ session('message') }}
-                        </div>
-                      @endif
-                      @if (session('delete'))
-                        <div class="alert alert-danger">
-                            {{ session('delete') }}
-                        </div>
-                      @endif
-              <div class="card-header">
-                <h3 class="card-title">Technicians</h3>
-                <a href="/technicians/create" class="btn btn-success" style="float:right">Create</a>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-              <table id="customers" class="table table-bordered table-striped">
-                  <thead>
-                      <tr>
-                        <th>Name</th> 
-                        <th>Action</th>                                             
-                      </tr>
-                  </thead>
-                  <tbody>
-                  @foreach( $technicians as $technician)
-                    <tr>
-                        <td>{{ $technician->name }}</td>                     
-                         
-                         <td>
-                         
+    <div class="card card-solid">
+        <div class="card-body pb-0">
+          <div class="row">
+              
+              @foreach( $technicians as $technician)
 
-                         <div class="form-row">
-                         
-                      
-                          <a  href="/technicians/{{$technician->id}}/edit" class="btn btn-warning  mx-auto" style="height:30px"><i class="fas fa-pencil-alt"></i></a>
-                          
-                          <form action="/technicians/{{$technician->id}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger  mx-auto" type="submit" ><i class="fas fa-trash-alt"></i></button>
-                          </form>
-                          </div>
-                          </td>
-                         
-                        
-                  </tr>
-                  @endforeach
-                 
-                  </tbody>
-                  
-                </table>
+              <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+              <div class="card bg-light d-flex flex-fill">
+                <div class="card-header text-muted border-bottom-0">
+                  Technician
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead"><b>{{ $technician->name }}</b></h2>
+                      <p class="text-muted text-sm"><b>About: </b> Technician </p>
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>Lan Bay</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: </li>
+                      </ul>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a href="/technicians/{{$technician->id}}/edit" class="btn btn-sm bg-teal">
+                      <i class="fas fa-comments"></i>Edit
+                    </a>
+                    <a href="#" class="btn btn-sm btn-danger">
+                      <i class="fas fa-user"></i> Delete
+                    </a>
+                  </div>
+                </div>
               </div>
+            </div>
+
+              @endforeach
               <!-- /.card-body -->
+             
               </div>
               </div>
         </div>
               
-
+</div>  
             
            
         <!-- /.row -->

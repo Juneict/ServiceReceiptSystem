@@ -23,8 +23,8 @@
                         </div>
                       @endif
               <div class="card-header">
-                <h3 class="card-title">Tasks</h3>
-                <a href="/tasks/create" class="btn btn-success" style="float:right">Create</a>
+                <h3 class="card-title">Orders</h3>
+                <a href="/orders/create" class="btn btn-success" style="float:right">Create</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -40,34 +40,28 @@
               <table id="customers" class="table table-bordered table-striped">
                   <thead>
                       <tr>
-                        <th>Received Date</th>
+                        <th>Ordered Date</th>
                         <th>Name</th>
+                        <th>Ph</th>
                         <th>Brand/Model</th>
-                        <th>Error</th>
-                        <th>Estimated Amount</th>
-                        <th>Total Amount</th>
+                        <th>Part</th>
+                        <th>Prepaid</th>
+                        <th>Price</th>
                         <th>Status</th>
-                        <th>Technician</th>
-                        
                         <th>Action</th>
-                      
                       </tr>
                   </thead>
                   <tbody>
-                  @foreach( $tasks as $task)
+                  @foreach( $orders as $order)
                     <tr>
-                        <td>{{ $task->created_at->format('Y-m-d')}}</td>
-                        <td>{{ $task->customers->name}}</td>
-                        <td>{{ $task->customers->brand}}</td>
-                        <td>{{ $task->customers->error}}</td>
-                        <td>{{ $task->estimated_amount}}</td>
-                        <td>{{ $task->total_amount}}</td>
-                        <td><span class="badge bg-success">{{ $status[$task->status]}}</span></td>
-                        <td>{{ $task->technicians->name}}</td>
-                        
-                        
-                       
-                         
+                        <td>{{ $order->created_at->format('Y-m-d')}}</td>
+                        <td>{{ $order->name}}</td>
+                        <td>{{ $order->ph}}</td>
+                        <td>{{ $order->brand }}</td>
+                        <td>{{ $order->part}}</td>
+                        <td>{{ $order->prepaid}}</td>
+                        <td>{{ $order->price}}</td>
+                        <td><span class="badge bg-success">{{ $status[$order->status]}}</span></td>     
                          <td>
                          
                          <!-- Example single danger button -->
@@ -77,16 +71,17 @@
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu" role="menu">
-                    <a  href="/tasks/{{$task->id}}/edit" class="dropdown-item btn btn-success mr-2" >Edit</a>
-                    <a  href="/tasks/{{$task->id}}/approve" class=" dropdown-item btn btn-success mr-2" >Process</a>
-                    <a  href="/tasks/{{$task->id}}/cancel" class="dropdown-item btn btn-danger mr-2 ">Cancle</a>
-                    <a  href="/tasks/{{$task->id}}/complete" class="dropdown-item btn btn-info mr-2 " >Complete</a>
-                    <a  href="/tasks/{{$task->id}}/TunSend" class="dropdown-item btn btn-info mr-2 " >Sending TunService</a>
-                    <a  href="/tasks/{{$task->id}}/TunArrived" class="dropdown-item btn btn-info mr-2 " >Arrived TunService</a>
-                    <a  href="/tasks/{{$task->id}}/completeNot" class="dropdown-item btn btn-warning my-2 " >Complete(TakeBack)</a>
-                    <a  href="/tasks/{{$task->id}}/task_invoice" class="dropdown-item btn btn-warning my-2 " >Print Invoice</a>
+                    <a  href="/orders/{{$order->id}}/edit" class="dropdown-item btn btn-success mr-2" >Edit</a>
+                    <a  href="/orders/{{$order->id}}/ordering" class=" dropdown-item btn btn-success mr-2" >Ordering</a>
+                    <a  href="/orders/{{$order->id}}/arrived" class="dropdown-item btn btn-danger mr-2 ">Arrived</a>
+                    <a  href="/orders/{{$order->id}}/completed" class="dropdown-item btn btn-info mr-2 " >Completed</a>
+                    <a  href="/orders/{{$order->id}}/cancle" class="dropdown-item btn btn-info mr-2 " >Cancle /Take Back</a>
+                    <a  href="/orders/{{$order->id}}/invoice" class="dropdown-item btn btn-warning my-2 " >Print Invoice</a>
                     </div>
-                  </div></td>
+                  </div>
+
+          
+                          </td>
                          
                         
                   </tr>
@@ -96,15 +91,12 @@
                   
                 </table>
               </div>
-              
               <!-- /.card-body -->
               </div>
-           
-            
               </div>
         </div>
               
-        
+
             
            
         <!-- /.row -->
@@ -114,28 +106,16 @@
   
   <!-- /.content-wrapper -->
 @endsection
-
-
-<script src="/../../plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/../../dist/js/demo.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+
 <script>
   $(function () {
     $('div.alert').delay(3000).slideUp(300);
     $('#customers').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      
-      "ordering": false,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-    $('#completed_task').DataTable({
       "paging": true,
       "lengthChange": false,
       
