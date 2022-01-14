@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TechniciansController;
 
 /*
@@ -18,9 +19,8 @@ use App\Http\Controllers\TechniciansController;
 |
 */
 
-Route::get('/', function () {
-    return view('customer');
-});
+
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 
 Auth::routes();
 Route::resource('/tasks',App\Http\Controllers\TaskController::class);

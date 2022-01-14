@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ICT SRS</title>
-
+   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -25,13 +21,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
-  
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="/dist/img/adminlogo.png"  class="brand-image img-circle elevation-3" style="opacity: 1">
+      <img src="/dist/img/logoict.jpg"  class="brand-image img-circle elevation-3" style="opacity: 1">
       <span class="brand-text font-weight-light">ICT SRS</span>
     </a>
 
@@ -40,10 +34,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/dist/img/user.png" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/userict.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">ICT Admin</a>
+          <a href="/dashboard" class="d-block">ICT Admin</a>
         </div>
       </div>
 
@@ -51,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
@@ -110,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </ul>
       </nav>
 
-      
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -179,12 +173,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../plugins/jszip/jszip.min.js"></script>
-<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
@@ -193,22 +181,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Page specific script -->
 
 <script>
-  
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+     function onElementHeightChange(elm, callback) {
+        var lastHeight = elm.clientHeight, newHeight;
+        (function run() {
+            newHeight = elm.clientHeight;
+            if (lastHeight != newHeight)
+                callback();
+            lastHeight = newHeight;
+
+            if (elm.onElementHeightChangeTimer)
+                clearTimeout(elm.onElementHeightChangeTimer);
+
+            elm.onElementHeightChangeTimer = setTimeout(run, 200);
+        })();
+    }
+
+
+    onElementHeightChange(document.body, function () {
+        //alert('Body height changed');
+        $('.main-sidebar').height($(document).outerHeight());
     });
-  });
+
 </script>
 </body>
 </html>
