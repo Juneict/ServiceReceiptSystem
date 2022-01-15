@@ -49,6 +49,7 @@
                         <th>Error</th>
                         <th>Estimated Amount</th>
                         <th>Total Amount</th>
+                        <th>Note</th>
                         <th>Status</th>
                         <th>Technician</th>
                         <th>TakeBack Date</th>
@@ -65,6 +66,7 @@
                         <td>{{  $task->customers->error}}</td>
                         <td>{{  $task->estimated_amount}}</td>
                         <td>{{  $task->total_amount}}</td>
+                        <td>{{  $task->customers->note}}</td>
                         <td><span class="badge bg-success">{{ $status[ $task->status]}}</span></td>
                         <td>{{  $task->technicians->name}}</td>
                         <td>{{  $task->updated_at->format('Y-m-d')}}</td>

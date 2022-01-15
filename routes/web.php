@@ -33,7 +33,7 @@ Route::get('/tasks/{task}/TunArrived', [App\Http\Controllers\TaskController::cla
 Route::get('/tasks/{task}/task_invoice', [App\Http\Controllers\TaskController::class, 'invoice']);
 
 
-Route::get('/home', [App\Http\Controllers\CustomersController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 Route::resource('customers',App\Http\Controllers\CustomersController::class);
 Route::get('/customers/{customer}/customer_invoice', [App\Http\Controllers\CustomersController::class, 'invoice']);
 

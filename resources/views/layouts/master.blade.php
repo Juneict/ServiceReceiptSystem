@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ICT SRS</title>
+  <link rel="shortcut icon" href="{{ asset('/dist/img/logoict.jpg') }}">
    
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -24,7 +25,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/dashboard" class="brand-link">
       <img src="/dist/img/logoict.jpg"  class="brand-image img-circle elevation-3" style="opacity: 1">
       <span class="brand-text font-weight-light">ICT SRS</span>
     </a>
